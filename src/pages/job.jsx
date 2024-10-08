@@ -12,8 +12,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-//import { ApplyJobDrawer } from "@/components/apply-job";
-//import ApplicationCard from "@/components/application-card";
+import { ApplyJobDrawer } from "@/components/apply-job";
+
 
 import useFetch from "@/hooks/use-fetch";
 import { getSingleJob, updateHiringStatus } from "@/api/apiJobs";
@@ -105,14 +105,17 @@ const JobPage = () => {
       </h2>
       <MDEditor.Markdown
         source={job?.requirements}
-        
         className="bg-transparent sm:text-lg" // add global ul styles - tutorial
+      />
+      {job?.recruiter_id !== user?.id && (
+        <ApplyJobDrawer
+          job={job}
+          user={user}
+          fetchJob={fnJob}
+          applied={job?.applications?.find((ap) => ap.candidate_id === user.id)}
         />
-        
+      )}
       
-     
-      {/* applications */}
-          
     </div>
   );
 };
