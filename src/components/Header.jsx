@@ -68,7 +68,7 @@ const Header = () => {
                 href="/my-jobs"
                 />
                 <UserButton.Link
-                label= "My Jobs"
+                label= "My Saved Jobs"
                 labelIcon={<Heart size={15}/>}
                 href="/saved-jobs"
                 />
